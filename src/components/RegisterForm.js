@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { TextInput, Text, View, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator
+} from "react-native";
 import Button from "./common/Button";
 import Card from "./common/Card";
 import CardSection from "./common/CardSection";
@@ -15,7 +21,8 @@ class RegisterForm extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-      message: ""
+      message: "",
+      isLoading: false
     };
   }
 
@@ -58,7 +65,7 @@ class RegisterForm extends Component {
       buttonStyle,
       TextSignUpStyle
     } = style;
-    const {  isLoading } = this.state;
+    const { isLoading } = this.state;
     return (
       <Card>
         <CardSection>
@@ -104,7 +111,7 @@ class RegisterForm extends Component {
             onPress={() => this.onBtnSignUpPress()}
             style={buttonStyle}
           >
-          {isLoading && <ActivityIndicator Size="large" />}
+            {isLoading && <ActivityIndicator Size="large" />}
             <Text style={textBtnStyle}>Sign Up</Text>
           </TouchableOpacity>
         </CardSection>

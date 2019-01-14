@@ -33,10 +33,7 @@ class App extends Component {
     } 
     else if (pageWillBeRendered === "ViewToped"){
       return (
-
-      
           <WebView source={{ uri: 'https://www.tokopedia.com/' }} />
-  
       );
       //return <PostPage backToMainPage={this.openOtherPage}  />
     }

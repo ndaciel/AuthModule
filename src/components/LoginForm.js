@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { TextInput, Text, View, TouchableOpacity,ActivityIndicator } from "react-native";
+import {
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator
+} from "react-native";
 import Button from "./common/Button";
 import Card from "./common/Card";
 import CardSection from "./common/CardSection";
@@ -15,14 +21,13 @@ class LoginForm extends Component {
       email: "",
       password: "",
       message: "",
-      isLoading:false
+      isLoading: false
     };
   }
 
-
   onBtnSignInPress = () => {
     this.setState({ isLoading: true });
-    const { email, password} = this.state;
+    const { email, password } = this.state;
     if (password == "" || email == "") {
       //console.log("Password and confirmation password should be the same!");
       this.setState({
@@ -36,7 +41,7 @@ class LoginForm extends Component {
         .then(response => {
           //this.setState({ message: "Login Success." });
           this.setState({ isLoading: false });
-          this.props.backToMainPage("ViewToped")
+          this.props.backToMainPage("ViewToped");
         })
         .catch(() => {
           this.setState({ message: "Authentication Failed." });
@@ -55,7 +60,7 @@ class LoginForm extends Component {
       buttonStyle,
       TextSignUpStyle
     } = style;
-    const {  isLoading } = this.state;
+    const { isLoading } = this.state;
     return (
       <Card>
         <CardSection>
@@ -88,13 +93,12 @@ class LoginForm extends Component {
             onPress={() => this.onBtnSignInPress()}
             style={buttonStyle}
           >
-          {isLoading && <ActivityIndicator Size="large" />}
+            {isLoading && <ActivityIndicator Size="large" />}
             <Text style={textBtnStyle}>Sign In</Text>
           </TouchableOpacity>
         </CardSection>
-        
+
         <TouchableOpacity onPress={() => this.props.backToMainPage("Register")}>
-          
           <Text style={TextSignUpStyle}>Register Here...</Text>
         </TouchableOpacity>
       </Card>
